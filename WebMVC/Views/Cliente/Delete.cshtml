@@ -1,0 +1,58 @@
+﻿@model WebMVC.Models.ClienteEnderecoViewModel
+
+@{
+    ViewBag.Title = "Excluir Cliente";
+}
+
+<div class="ajuste-container"></div>
+
+<h2>Deseja realmente excluir esse cliente?</h2>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            <label>Nome</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            <label>CPF</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CPF)
+        </dd>
+
+        <dt>
+            <label>RG</label>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RG)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        @*<div class="form-actions no-color ajuste-input-delete">
+            <input type="submit" value="Excluir" class="btn btn-danger" /> |
+            @Html.ActionLink("Voltar", "Index", new { }, new { @class = "btn btn-info" })
+        </div>*@
+
+        <div class="container-inputs links-acao">
+            <div>
+                @Html.ActionLink("← Voltar", "Index", new { }, new { @class = "tamanho-links-acao btn btn-info" })
+            </div>
+            <div>
+                <input type="submit" value="Excluir" class="retira-transform-text tamanho-links-acao btn btn-danger" />
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,189 @@
+﻿@model WebMVC.Models.ClienteEnderecoViewModel
+
+@{
+    ViewBag.Title = "Adicionar Novo Cliente";
+}
+
+<div class="ajuste-container"></div>
+
+<h2>Adicionar Novo Cliente</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />       
+
+        <span class="fildset-cliente">Cliente</span>
+
+        <div class="container-inputs">
+
+            <div class="col-lg-2">
+                @Html.LabelFor(model => model.CPF, htmlAttributes: new { @class = "label-inputs" })
+                @Html.EditorFor(model => model.CPF, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CPF, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-lg-12">
+                @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "label-inputs" })
+                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="container-inputs">
+
+            <div class="col-lg-3">
+                @Html.LabelFor(model => model.RG, htmlAttributes: new { @class = "label-inputs" })
+                @Html.EditorFor(model => model.RG, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.RG, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="col-lg-3">
+                @Html.LabelFor(model => model.DataExpedicao, htmlAttributes: new { @class = "label-inputs" })
+                @Html.EditorFor(model => model.DataExpedicao, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DataExpedicao, "", new { @class = "text-danger" })
+            </div>
+
+
+            <div class="col-lg-3">
+                @Html.LabelFor(model => model.OrgaoExpedicao, htmlAttributes: new { @class = "label-inputs" })
+                @Html.DropDownListFor(model => model.OrgaoExpedicao,
+                ((IDictionary<string, string>)ViewBag.DicionarioOrgaoEspedicao).Select(option => new SelectListItem
+                {
+                    Text = option.Value,
+                    Value = option.Key,
+                    Selected = (Model != null) && (option.Value == Model.OrgaoExpedicao)
+                }), "", new { @class = "form-control" })
+
+                @Html.ValidationMessageFor(model => model.OrgaoExpedicao, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="col-lg-3">
+                @Html.LabelFor(model => model.UfExpedicao, htmlAttributes: new { @class = "label-inputs" })
+                @Html.DropDownListFor(model => model.UfExpedicao,
+                   ((IDictionary<string, string>)ViewBag.DicionarioUf).Select(option => new SelectListItem
+                   {
+                       Text = option.Value,
+                       Value = option.Key,
+                       Selected = (Model != null) && (option.Value == Model.UfExpedicao)
+                   }), "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.UfExpedicao, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+
+        <div class="container-inputs">
+
+            <div class="col-lg-3">
+                @Html.LabelFor(model => model.DataNascimento, htmlAttributes: new { @class = "label-inputs" })
+                @Html.EditorFor(model => model.DataNascimento, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DataNascimento, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-lg-3">
+                @Html.LabelFor(model => model.Sexo, htmlAttributes: new { @class = "label-inputs" })
+                @Html.DropDownListFor(model => model.Sexo,
+                   ((IDictionary<string, string>)ViewBag.DicionarioGenero).Select(option => new SelectListItem
+                   {
+                       Text = option.Value,
+                       Value = option.Key,
+                       Selected = (Model != null) && (option.Value == Model.Sexo)
+                   }), "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Sexo, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-lg-3">
+                @Html.LabelFor(model => model.EstadoCivil, htmlAttributes: new { @class = "label-inputs" })
+                @Html.DropDownListFor(model => model.EstadoCivil,
+                   ((IDictionary<string, string>)ViewBag.DicionarioEstadoCivil).Select(option => new SelectListItem
+                   {
+                       Text = option.Value,
+                       Value = option.Key,
+                       Selected = (Model != null) && (option.Value == Model.EstadoCivil)
+                   }), "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.EstadoCivil, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+
+        <span class="fildset-cliente">Endereço</span>
+
+        <div class="container-inputs">
+
+            <div class="col-lg-3">
+                @Html.LabelFor(model => model.CEP, htmlAttributes: new { @class = "label-inputs" })
+                <div class="container-search">
+                    @Html.EditorFor(model => model.CEP, new { htmlAttributes = new { @class = "form-control col-lg-2" } })
+                    <button type="button" class="button-search btn btn-primary" style="padding: 0">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                @Html.ValidationMessageFor(model => model.CEP, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-lg-3">
+                @Html.LabelFor(model => model.Logradouro, htmlAttributes: new { @class = "label-inputs" })
+                @Html.EditorFor(model => model.Logradouro, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Logradouro, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="col-lg-1">
+                @Html.LabelFor(model => model.Numero, htmlAttributes: new { @class = "label-inputs" })
+                @Html.EditorFor(model => model.Numero, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Numero, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="col-lg-3">
+                @Html.LabelFor(model => model.Complemento, htmlAttributes: new { @class = "label-inputs" })
+                @Html.EditorFor(model => model.Complemento, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Complemento, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="col-lg-3">
+                @Html.LabelFor(model => model.Bairro, htmlAttributes: new { @class = "label-inputs" })
+                @Html.EditorFor(model => model.Bairro, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Bairro, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="col-lg-3">
+                @Html.LabelFor(model => model.Cidade, htmlAttributes: new { @class = "label-inputs" })
+                @Html.EditorFor(model => model.Cidade, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Cidade, "", new { @class = "text-danger" })
+
+            </div>
+
+            <div class="col-lg-2">
+                @Html.LabelFor(model => model.UfEndereco, htmlAttributes: new { @class = "label-inputs" })
+                @Html.DropDownListFor(model => model.UfEndereco,
+                  ((IDictionary<string, string>)ViewBag.DicionarioUf).Select(option => new SelectListItem
+                  {
+                      Text = option.Value,
+                      Value = option.Key,
+                      Selected = (Model != null) && (option.Value == Model.UfEndereco)
+                  }), "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.UfEndereco, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+
+        <div class="container-inputs links-acao">
+            <div>
+                @Html.ActionLink("← Voltar", "Index", new { }, new { @class = "tamanho-links-acao btn btn-info" })
+            </div>
+            <div>
+                <input type="submit" value="Adicionar →" class="retira-transform-text tamanho-links-acao btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+

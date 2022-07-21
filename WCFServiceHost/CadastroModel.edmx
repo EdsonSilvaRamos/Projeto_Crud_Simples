@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CadastroDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CPF" Type="nvarchar" MaxLength="14" Nullable="false" />
+          <Property Name="Nome" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="RG" Type="nvarchar" MaxLength="15" />
+          <Property Name="DataExpedicao" Type="datetime" Nullable="false" />
+          <Property Name="OrgaoExpedicao" Type="nvarchar" MaxLength="10" />
+          <Property Name="UF" Type="nvarchar" MaxLength="2" />
+          <Property Name="DataNascimento" Type="datetime" Nullable="false" />
+          <Property Name="Sexo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EstadoCivil" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EnderecoId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Enderecos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CEP" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Logradouro" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Numero" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Complemento" Type="nvarchar" MaxLength="100" />
+          <Property Name="Bairro" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cidade" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UF" Type="nvarchar" MaxLength="2" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_dbo_Clientes_dbo_Enderecos_EnderecoId">
+          <End Role="Enderecos" Type="Self.Enderecos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Enderecos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Clientes">
+              <PropertyRef Name="EnderecoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CadastroDBModelStoreContainer">
+          <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Enderecos" EntityType="Self.Enderecos" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_Clientes_dbo_Enderecos_EnderecoId" Association="Self.FK_dbo_Clientes_dbo_Enderecos_EnderecoId">
+            <End Role="Enderecos" EntitySet="Enderecos" />
+            <End Role="Clientes" EntitySet="Clientes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CadastroDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CPF" Type="String" MaxLength="14" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nome" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RG" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="DataExpedicao" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="OrgaoExpedicao" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="UF" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="DataNascimento" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Sexo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EstadoCivil" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EnderecoId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Enderecos" Relationship="Self.FK_dbo_Clientes_dbo_Enderecos_EnderecoId" FromRole="Clientes" ToRole="Enderecos" />
+        </EntityType>
+        <EntityType Name="Enderecos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CEP" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Logradouro" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Numero" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Complemento" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Bairro" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Cidade" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UF" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Clientes" Relationship="Self.FK_dbo_Clientes_dbo_Enderecos_EnderecoId" FromRole="Enderecos" ToRole="Clientes" />
+        </EntityType>
+        <Association Name="FK_dbo_Clientes_dbo_Enderecos_EnderecoId">
+          <End Role="Enderecos" Type="Self.Enderecos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Clientes" Type="Self.Clientes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Enderecos">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Clientes">
+              <PropertyRef Name="EnderecoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CadastroEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Clientes" EntityType="Self.Clientes" />
+          <EntitySet Name="Enderecos" EntityType="Self.Enderecos" />
+          <AssociationSet Name="FK_dbo_Clientes_dbo_Enderecos_EnderecoId" Association="Self.FK_dbo_Clientes_dbo_Enderecos_EnderecoId">
+            <End Role="Enderecos" EntitySet="Enderecos" />
+            <End Role="Clientes" EntitySet="Clientes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CadastroDBModelStoreContainer" CdmEntityContainer="CadastroEntities">
+          <EntitySetMapping Name="Clientes">
+            <EntityTypeMapping TypeName="CadastroDBModel.Clientes">
+              <MappingFragment StoreEntitySet="Clientes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CPF" ColumnName="CPF" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="RG" ColumnName="RG" />
+                <ScalarProperty Name="DataExpedicao" ColumnName="DataExpedicao" />
+                <ScalarProperty Name="OrgaoExpedicao" ColumnName="OrgaoExpedicao" />
+                <ScalarProperty Name="UF" ColumnName="UF" />
+                <ScalarProperty Name="DataNascimento" ColumnName="DataNascimento" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="EstadoCivil" ColumnName="EstadoCivil" />
+                <ScalarProperty Name="EnderecoId" ColumnName="EnderecoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Enderecos">
+            <EntityTypeMapping TypeName="CadastroDBModel.Enderecos">
+              <MappingFragment StoreEntitySet="Enderecos">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CEP" ColumnName="CEP" />
+                <ScalarProperty Name="Logradouro" ColumnName="Logradouro" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="Complemento" ColumnName="Complemento" />
+                <ScalarProperty Name="Bairro" ColumnName="Bairro" />
+                <ScalarProperty Name="Cidade" ColumnName="Cidade" />
+                <ScalarProperty Name="UF" ColumnName="UF" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

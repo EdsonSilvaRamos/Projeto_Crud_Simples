@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:52801/ClienteService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WCFServiceHost" />
+  <xs:import schemaLocation="http://localhost:52801/ClienteService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/WebForm.DTOs" />
+  <xs:element name="RetornaClientes">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetornaClientesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/WCFServiceHost" minOccurs="0" name="RetornaClientesResult" nillable="true" type="q1:ArrayOfClientes" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetornaClientePor">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RetornaClientePorResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/WCFServiceHost" minOccurs="0" name="RetornaClientePorResult" nillable="true" type="q2:Clientes" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AdicionaCliente">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WCFServiceHost" minOccurs="0" name="clientes" nillable="true" type="q3:Clientes" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AdicionaClienteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/WCFServiceHost" minOccurs="0" name="AdicionaClienteResult" nillable="true" type="q4:Clientes" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AtualizaCliente">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/WebForm.DTOs" minOccurs="0" name="clienteEnderecoDTO" nillable="true" type="q5:ClienteEnderecoDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AtualizaClienteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/WCFServiceHost" minOccurs="0" name="AtualizaClienteResult" nillable="true" type="q6:Clientes" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExcluiClientePor">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExcluiClientePorResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/WCFServiceHost" minOccurs="0" name="ExcluiClientePorResult" nillable="true" type="q7:Clientes" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

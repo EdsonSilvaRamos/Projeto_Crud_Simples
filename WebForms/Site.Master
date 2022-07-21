@@ -1,0 +1,58 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="WebForm.Site" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous" />
+    <link href="~/CSS/css-core.css" rel="stylesheet" />
+    <link href="~/CSS/layout.css" rel="stylesheet" />
+    <link href="~/CSS/ajuste-forms.css" rel="stylesheet" />
+    <link href="~/CSS/bootstrap-datetimepicker.css" rel="stylesheet" />
+    <link href="~/CSS/bootstrap-formhelpers.min.css" rel="stylesheet" />
+    <link href="~/CSS/bootstrap-menu.css" rel="stylesheet" />
+    <link href="~/CSS/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/CSS/css-adicional.css" rel="stylesheet" />
+
+    <title>Home</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server" style="margin-top: 150px">
+        <main>
+            <div class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <asp:Menu ID="Menu1" runat="server" CssClass="navbar-brand" Orientation="Horizontal">
+                            <Items>
+                                <asp:MenuItem Text="Home" Value="Home" NavigateUrl="~/Index.aspx"></asp:MenuItem>
+                                <asp:MenuItem Text="Clientes" Value="Clientes" NavigateUrl="~/Clientes.aspx"></asp:MenuItem>
+                            </Items>
+                        </asp:Menu>
+                    </div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </main>
+    </form>
+    <hr />
+    <footer>
+        <p>&copy; 2022 - Teste Edson Ramos</p>
+    </footer>
+</body>
+</html>

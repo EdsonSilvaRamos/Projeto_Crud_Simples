@@ -1,0 +1,56 @@
+﻿.novo-usuario {
+    margin-top: 20px;
+}
+
+.ajuste-container {
+    margin-top: 80px;
+}
+
+.ajuste-input-delete > input {
+    margin-left: 75px;
+}
+
+.container-inputs {
+    display: flex;
+    gap: 1px;
+    margin-bottom: 5px;
+}
+
+.label-inputs {
+    font-size: 9pt;
+}
+
+.links-acao {
+    justify-content: center;
+    gap: 5px;
+    margin: 20px 0 20px 0;
+}
+
+.tamanho-links-acao {
+    width: 150px;
+}
+
+.container-search {
+    display: flex;
+}
+
+.button-search {
+    height: 34px;
+    width: 34px;
+}
+
+    .button-search > i {
+        margin-left: -3px;
+        font-size: 8pt;
+    }
+
+.retira-transform-text {
+    text-transform: none;
+}
+
+.fildset-cliente {
+    font-size: 12pt;
+    font-weight: bold;
+    color: #073585;
+    margin: 20px 0 20px 0;
+}
